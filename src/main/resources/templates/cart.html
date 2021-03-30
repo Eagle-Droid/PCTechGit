@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PC Tech</title>
+    <link th:href="@{css/style.css}" href="../../static/css/style.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+</head>
+<body class="bmain">
+
+<div class="logo">
+    <a href="index"><img src="images/logo.png"></a>
+</div>
+<div class="account">
+    <ul>
+        <li>
+            <a href="cart" class="cos">Cos<ion-icon name="cart-outline"></ion-icon><span>0</span>
+                <a href="login">Logare</a>
+                <a href="inreg">Inregistrare</a>
+        </li>
+    </ul>
+</div>
+<nav>
+    <div class="nav-links">
+        <div class="laptop-hover"><a href="">Laptop</a>
+            <div class="laptop-drop-content">
+                <a href="laptop-notebook">Notebook/Laptop</a>
+                <a href="laptop-gaming">Laptop Gaming</a>
+                <a href="memorii-notebook">Memorii Notebook/Laptop</a>
+            </div>
+        </div>
+        <div class="sis-hover"><a href="">Sisteme Gaming & Office</a>
+            <div class="sis-drop-content">
+                <a href="pc_scoala">PC Scoala Online</a>
+                <a href="pc_gaming">PC Gaming</a>
+            </div>
+        </div>
+        <div class="comp-hover"><a href="componente">Componente</a>
+        </div>
+
+    </div>
+</nav>
+<div class="products-container">
+    <div class="product-header">
+        <h5 class="product-title">Produs</h5>
+        <h5 class="cart-price">Pret</h5>
+        <h5 class="quantity">Cant.</h5>
+        <h5 class="total">Total</h5>
+    </div>
+    <div class="products">
+
+    </div>
+</div>
+<script src="myAddToCartScriptt.js"></script>
+</body>
+</html>

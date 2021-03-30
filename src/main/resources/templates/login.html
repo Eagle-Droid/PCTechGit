@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to bottom , #00bfff,#00008b);}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+    background: linear-gradient(to bottom , #00bfff,#00008b);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.container {
+  padding: 16px;
+}
+.reg{
+  text-align: center;
+  color: white;
+}
+.reg a{
+  color: white;
+}
+
+
+
+</style>
+</head>
+<body>
+
+  <div class="logo">
+    <a href="index"><img src="images/logo.png" width="155px"></a>
+  </div>
+
+<form action="/login-form" >
+
+
+  <div class="container">
+    <label ><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label ><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit">Login</button>
+
+  </div>
+
+  <div class="reg">
+    <a href="inreg" >Inregistrare</a>
+  </div>
+  <p th:text="${message}"></p>
+</form>
+
+</body>
+</html>
