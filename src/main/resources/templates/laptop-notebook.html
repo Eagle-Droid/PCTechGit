@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>PC Tech</title>
+        <link th:href="@{css/laptop-nav.css}" href="../../static/css/laptop-nav.css"
+              rel="stylesheet" type="text/css" media="screen"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    </head>
+    <body class="bmain">
+        <div class="main">
+            <div class="logo">
+               <a href="index"><img src="images/logo.png"></a>
+            </div>
+            <div class="account">
+                <ul>
+                    <li>
+                        <a href="cart" class="cos">Cos<ion-icon name="cart-outline"></ion-icon><span>0</span>
+                        <a href="login">Logare</a>
+                        <a href="inreg">Inregistrare</a>
+                    </li>
+                </ul>
+            </div>
+             <nav>
+                <div class="nav-links">
+                    <div class="laptop-hover"><a href="">Laptop</a>
+                        <div class="laptop-drop-content">
+                            <a href="laptop-notebook">Notebook/Laptop</a>
+                            <a href="laptop-gaming">Laptop Gaming</a>
+                            <a href="memorii-notebook">Memorii Notebook/Laptop</a>
+                        </div>
+                    </div>
+                    <div class="sis-hover"><a href="">Sisteme Gaming & Office</a>
+                        <div class="sis-drop-content">
+                            <a href="pc_scoala">PC Scoala Online</a>
+                            <a href="pc_gaming">PC Gaming</a>
+                        </div>
+                    </div>
+                    <div class="comp-hover"><a href="componente">Componente</a>
+                    </div>
+                    
+                    </div>
+                    
+                    
+                </div>
+            </nav>
+        </div>
+        <table class="table">
+            <tr class="images">
+              <th><img src="images/Laptop/1.jpg" alt="" width="200px" height="200px" class="img"></th>
+              <th><img src="images/Laptop/2.jpg" alt="" width="200px" height="200px" class="img"></th>
+              <th><img src="images/Laptop/3.jpg" alt="" width="200px" height="200px" class="img"></th>
+              <th><img src="images/Laptop/4.jpg" alt="" width="200px" height="200px" class="img"></th>
+              <th><img src="images/Laptop/5.jpg" alt="" width="200px" height="200px" class="img"></th>
+            </tr>
+            <tr class="desc">
+                <td><a href="">Notebook / Laptop ASUS Gaming 17.3'' ROG Strix G G731GT, FHD, Procesor Intel® Core™ i7-9750H</a></td>
+                <td><a href="">Notebook / Laptop Acer 14'' Aspire 5 A514-53, FHD, Procesor Intel® Core™ i5-1035G1</a></td>
+                <td><a href="">Notebook / Laptop Acer 15.6'' Aspire 5 A515-54G, FHD, Procesor Intel® Core™ i5-10210U</a></td>
+                <td><a href="">Notebook / Laptop Lenovo 15.6'' ThinkPad E15, FHD, Procesor Intel® Core™ i5-10210U</a></td>
+                <td><a href="">Notebook / Laptop HP 15.6'' 255 G7, FHD, Procesor AMD Ryzen™ 5 3500U</a></td>
+            </tr>
+            <tr>
+              <td>
+                <li>Diagonala: 17.3 inch</li>
+                <li>Familie: Intel® Core™ i7 din a noua generatie Coffee Lake</li>
+                <li>Frecventa: 2,6 GHz</li>
+                <li>Capacitate: 8 GB</li>
+                <li>Capacitate SSD: 512 GB</li>
+                <li>Model: GTX 1650</li>
+            </td>
+              <td><li>Diagonala: 14 inch</li>
+                <li>Familie: Intel® Core™ i5 din a zecea generatie Ice Lake</li>
+                <li>Frecventa: 1 GHz</li>
+                <li>Capacitate: 8 GB</li>
+                <li>Capacitate SSD: 512 GB</li>
+                <li>Model: UHD</li>    
+            </td>
+                <td>
+                    <li>Diagonala: 15.6 inch</li>
+                    <li>Familie: Intel® Core™ i5 din a zecea generatie Comet Lake</li>
+                    <li>Frecventa: 1,6 GHz</li>
+                    <li>Capacitate: 8 GB</li>
+                    <li>Capacitate SSD: 512 GB</li>
+                    <li>Model: MX250</li>
+                </td>
+                <td><li>Diagonala: 15.6 inch</li>
+                    <li>Familie: Intel® Core™ i5 din a zecea generatie Comet Lake</li>
+                    <li>Frecventa: 1,6 GHz</li>
+                    <li>Capacitate: 8 GB</li>
+                    <li>Capacitate SSD: 256 GB</li>
+                    <li>Model: UHD</li>
+                </td>
+                <td>
+                    <li>Diagonala: 15.6 inch</li>
+                    <li>Familie: Ryzen 5</li>
+                    <li>Frecventa: 2,1 GHz</li>
+                    <li>Capacitate: 8 GB</li>
+                    <li>Capacitate SSD: 256 GB</li>
+                    <li> Model: Vega 8</li>
+                </td>
+            </tr>
+            <tr class="price">
+                <td>4.098,99 RON</td>
+                <td>2.898,99 RON</td>
+                <td>3.198,99 RON</td>
+                <td>3.498,99 RON</td>
+                <td>2.698,99 RON</td>
+            </tr>
+            <tr class="price">
+                <td>
+                    <p id="addbtn"><button>Adauga in cos</button></p>
+                </td>
+                <td>
+                    <p id="addbtn"><button>Adauga in cos</button></p>
+                </td>
+                <td>
+                    <p id="addbtn"><button>Adauga in cos</button></p>
+                </td>
+                <td>
+                    <p id="addbtn"><button>Adauga in cos</button></p>
+                </td>
+                <td>
+                    <p id="addbtn"><button>Adauga in cos</button></p>
+                </td>
+            </tr>
+
+          </table>
+        
+        
+                    
+                    
+                            
+                    </body>
+</html>
