@@ -1,4 +1,4 @@
-package onlineShop.PCTech;
+package onlineShop.PCTech.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,11 +9,6 @@ public class mainController {
     @GetMapping("/index")
     public ModelAndView frontpage() {
         ModelAndView modelAndView = new ModelAndView("index");
-        return modelAndView;
-    }
-    @GetMapping("/userDetails")
-    public ModelAndView userDetails() {
-        ModelAndView modelAndView = new ModelAndView("userDetails");
         return modelAndView;
     }
 

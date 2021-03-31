@@ -1,4 +1,4 @@
-package onlineShop.PCTech;
+package onlineShop.PCTech.Database;
 
 import org.springframework.jdbc.core.RowMapper;
 
@@ -12,6 +12,9 @@ public class UserRowMapper  implements RowMapper {
         user.setId(resultSet.getInt("id"));
         user.setEmail(resultSet.getString("email"));
         user.setPassword(resultSet.getString("password"));
+        user.setFirstName(resultSet.getString("First Name"));
+        user.setLastName(resultSet.getString("Last Name"));
+
         return user;
     }
 }
