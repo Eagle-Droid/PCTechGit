@@ -11,6 +11,11 @@ public class mainController {
         ModelAndView modelAndView = new ModelAndView("index");
         return modelAndView;
     }
+    @GetMapping("/userDetails")
+    public ModelAndView userDetails() {
+        ModelAndView modelAndView = new ModelAndView("userDetails");
+        return modelAndView;
+    }
 
     @GetMapping("/componente")
     public ModelAndView componente() {
