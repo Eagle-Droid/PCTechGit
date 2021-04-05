@@ -1,11 +1,20 @@
 package onlineShop.PCTech.Controller;
 
+import onlineShop.PCTech.Database.Product;
+import onlineShop.PCTech.Database.ProductDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class mainController {
+
+    @Autowired
+    ProductDAO productDAO;
+
     @GetMapping("/index")
     public ModelAndView frontpage() {
         ModelAndView modelAndView = new ModelAndView("index");
@@ -14,7 +23,10 @@ public class mainController {
 
     @GetMapping("/componente")
     public ModelAndView componente() {
+        List<Product> products = productDAO.findAll();
         ModelAndView modelAndView = new ModelAndView("componente");
+        modelAndView.addObject("products",products);
+
         return modelAndView;
     }
 

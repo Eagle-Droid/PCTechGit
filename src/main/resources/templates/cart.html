@@ -1,59 +1,181 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-    <title>PC Tech</title>
-    <link th:href="@{css/style.css}" href="../../static/css/style.css"
-          rel="stylesheet" type="text/css" media="screen"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
-</head>
-<body class="bmain">
 
-<div class="logo">
-    <a href="index"><img src="images/logo.png"></a>
-</div>
-<div class="account">
-    <ul>
-        <li>
-            <a href="cart" class="cos">Cos<ion-icon name="cart-outline"></ion-icon><span>0</span>
-                <a href="login">Logare</a>
-                <a href="inreg">Inregistrare</a>
-        </li>
-    </ul>
-</div>
+<!DOCTYPE html><html class=''>
+<head><script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/RSH87/pen/RagqEv?limit=all&page=50&q=contact+" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
+
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.2.4/css/simple-line-icons.min.css'>
+    <link rel="stylesheet" href="css/index.css">
+</head><body>
 <nav>
-    <div class="nav-links">
-        <div class="laptop-hover"><a href="">Laptop</a>
+    <div class='mini'>
+        <p class='products'>Empty</p>
+        <p class='names'></p>
+        <p class='miniprice'></p>
+    </div>
+    <ul class="leftnav">
+
+        <li class="laptop-hover"><a href="">Laptop</a>
             <div class="laptop-drop-content">
                 <a href="laptop-notebook">Notebook/Laptop</a>
                 <a href="laptop-gaming">Laptop Gaming</a>
                 <a href="memorii-notebook">Memorii Notebook/Laptop</a>
             </div>
-        </div>
-        <div class="sis-hover"><a href="">Sisteme Gaming & Office</a>
-            <div class="sis-drop-content">
+        </li>
+        <li class="laptop-hover"><a href="">Sisteme Gaming & Office</a>
+            <div class="laptop-drop-content">
                 <a href="pc_scoala">PC Scoala Online</a>
                 <a href="pc_gaming">PC Gaming</a>
             </div>
-        </div>
-        <div class="comp-hover"><a href="componente">Componente</a>
-        </div>
+        </li>
+        <li class="laptop-hover"><a href="componente">Componente</a></li>
+    </ul>
+    <ul class="navlogo"><a href="index"><img class="logo" src="images/logo.png"></a></ul>
+    <ul class="rightnav">
+        <li><a href="userDetails">Detalii cont</a></li>
+        <li><a href="login">Logare</a></li>
+        <li><a href="register">istrare</a></li>
+    </ul>
+    <div class='cart icon-basket'>
 
+        <span class='number'>1</span>
     </div>
 </nav>
-<div class="products-container">
-    <div class="product-header">
-        <h5 class="product-title">Produs</h5>
-        <h5 class="cart-price">Pret</h5>
-        <h5 class="quantity">Cant.</h5>
-        <h5 class="total">Total</h5>
-    </div>
-    <div class="products">
-
+<div class='mainDiv'>
+    <div class="cart-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="main-heading">Shopping Cart</div>
+                    <div class="table-cart">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="display-flex align-center">
+                                        <div class="img-product">
+                                            <img src="https://www.91-img.com/pictures/laptops/asus/asus-x552cl-sx019d-core-i3-3rd-gen-4-gb-500-gb-dos-1-gb-61721-large-1.jpg" alt="" class="mCS_img_loaded">
+                                        </div>
+                                        <div class="name-product">
+                                            Apple iPad Mini
+                                            <br>G2356
+                                        </div>
+                                        <div class="price">
+                                            $1,250.00
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="product-count">
+                                    <form action="#" class="count-inlineflex">
+                                        <div class="qtyminus">-</div>
+                                        <input type="text" name="quantity" value="1" class="qty">
+                                        <div class="qtyplus">+</div>
+                                    </form>
+                                </td>
+                                <td>
+                                    <div class="total">
+                                        $6,250.00
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="#" title="">
+                                        <img src="images/icons/delete.png" alt="" class="mCS_img_loaded">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="display-flex align-center">
+                                        <div class="img-product">
+                                            <img src="https://www.91-img.com/pictures/laptops/asus/asus-x552cl-sx019d-core-i3-3rd-gen-4-gb-500-gb-dos-1-gb-61721-large-1.jpg" alt="" class="mCS_img_loaded">
+                                        </div>
+                                        <div class="name-product">
+                                            Apple iPad Mini
+                                            <br>G2356
+                                        </div>
+                                        <div class="price">
+                                            $1,250.00
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="product-count">
+                                    <form action="#" class="count-inlineflex">
+                                        <div class="qtyminus">-</div>
+                                        <input type="text" name="quantity" value="1" class="qty">
+                                        <div class="qtyplus">+</div>
+                                    </form>
+                                </td>
+                                <td>
+                                    <div class="total">
+                                        $6,250.00
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="#" title="">
+                                        <img src="images/icons/delete.png" alt="" class="mCS_img_loaded">
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="coupon-box">
+                            <form action="#" method="get" accept-charset="utf-8">
+                                <div class="coupon-input">
+                                    <input type="text" name="coupon code" placeholder="Coupon Code">
+                                    <button type="submit" class="round-black-btn">Apply Coupon</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /.table-cart -->
+                </div>
+                <!-- /.col-lg-8 -->
+                <div class="col-lg-4">
+                    <div class="cart-totals">
+                        <h3>Cart Totals</h3>
+                        <form action="#" method="get" accept-charset="utf-8">
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td class="subtotal">$2,589.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Shipping</td>
+                                    <td class="free-shipping">Free Shipping</td>
+                                </tr>
+                                <tr class="total-row">
+                                    <td>Total</td>
+                                    <td class="price-total">$1,591.00</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="btn-cart-totals">
+                                <a href="#" class="update round-black-btn" title="">Update Cart</a>
+                                <a href="#" class="checkout round-black-btn" title="">Proceed to Checkout</a>
+                            </div>
+                            <!-- /.btn-cart-totals -->
+                        </form>
+                        <!-- /form -->
+                    </div>
+                    <!-- /.cart-totals -->
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
+        </div>
     </div>
 </div>
 <script src="myAddToCartScriptt.js"></script>

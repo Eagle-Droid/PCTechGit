@@ -1,138 +1,51 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <title>PC Tech</title>
-        <link th:href="@{css/laptop-nav.css}" href="../../static/css/laptop-nav.css"
-              rel="stylesheet" type="text/css" media="screen"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
-    </head>
-    <body class="bmain">
-        <div class="main">
-            <div class="logo">
-               <a href="index"><img src="images/logo.png"></a>
-            </div>
-            <div class="account">
-                <ul>
-                    <li>
-                        <a href="cart" class="cos">Cos<ion-icon name="cart-outline"></ion-icon><span>0</span>
-                        <a href="login">Logare</a>
-                        <a href="inreg">Inregistrare</a>
-                    </li>
-                </ul>
-            </div>
-             <nav>
-                <div class="nav-links">
-                    <div class="laptop-hover"><a href="">Laptop</a>
-                        <div class="laptop-drop-content">
-                            <a href="laptop-notebook">Notebook/Laptop</a>
-                            <a href="laptop-gaming">Laptop Gaming</a>
-                            <a href="memorii-notebook">Memorii Notebook/Laptop</a>
-                        </div>
-                    </div>
-                    <div class="sis-hover"><a href="">Sisteme Gaming & Office</a>
-                        <div class="sis-drop-content">
-                            <a href="pc_scoala">PC Scoala Online</a>
-                            <a href="pc_gaming">PC Gaming</a>
-                        </div>
-                    </div>
-                    <div class="comp-hover"><a href="componente">Componente</a>
-                    </div>
-                    
-                    </div>
-                    
-                    
-                </div>
-            </nav>
-        </div>
-        <table class="table">
-            <tr class="images">
-              <th><img src="images/Laptop/1.jpg" alt="" width="200px" height="200px" class="img"></th>
-              <th><img src="images/Laptop/2.jpg" alt="" width="200px" height="200px" class="img"></th>
-              <th><img src="images/Laptop/3.jpg" alt="" width="200px" height="200px" class="img"></th>
-              <th><img src="images/Laptop/4.jpg" alt="" width="200px" height="200px" class="img"></th>
-              <th><img src="images/Laptop/5.jpg" alt="" width="200px" height="200px" class="img"></th>
-            </tr>
-            <tr class="desc">
-                <td><a href="">Notebook / Laptop ASUS Gaming 17.3'' ROG Strix G G731GT, FHD, Procesor Intel® Core™ i7-9750H</a></td>
-                <td><a href="">Notebook / Laptop Acer 14'' Aspire 5 A514-53, FHD, Procesor Intel® Core™ i5-1035G1</a></td>
-                <td><a href="">Notebook / Laptop Acer 15.6'' Aspire 5 A515-54G, FHD, Procesor Intel® Core™ i5-10210U</a></td>
-                <td><a href="">Notebook / Laptop Lenovo 15.6'' ThinkPad E15, FHD, Procesor Intel® Core™ i5-10210U</a></td>
-                <td><a href="">Notebook / Laptop HP 15.6'' 255 G7, FHD, Procesor AMD Ryzen™ 5 3500U</a></td>
-            </tr>
-            <tr>
-              <td>
-                <li>Diagonala: 17.3 inch</li>
-                <li>Familie: Intel® Core™ i7 din a noua generatie Coffee Lake</li>
-                <li>Frecventa: 2,6 GHz</li>
-                <li>Capacitate: 8 GB</li>
-                <li>Capacitate SSD: 512 GB</li>
-                <li>Model: GTX 1650</li>
-            </td>
-              <td><li>Diagonala: 14 inch</li>
-                <li>Familie: Intel® Core™ i5 din a zecea generatie Ice Lake</li>
-                <li>Frecventa: 1 GHz</li>
-                <li>Capacitate: 8 GB</li>
-                <li>Capacitate SSD: 512 GB</li>
-                <li>Model: UHD</li>    
-            </td>
-                <td>
-                    <li>Diagonala: 15.6 inch</li>
-                    <li>Familie: Intel® Core™ i5 din a zecea generatie Comet Lake</li>
-                    <li>Frecventa: 1,6 GHz</li>
-                    <li>Capacitate: 8 GB</li>
-                    <li>Capacitate SSD: 512 GB</li>
-                    <li>Model: MX250</li>
-                </td>
-                <td><li>Diagonala: 15.6 inch</li>
-                    <li>Familie: Intel® Core™ i5 din a zecea generatie Comet Lake</li>
-                    <li>Frecventa: 1,6 GHz</li>
-                    <li>Capacitate: 8 GB</li>
-                    <li>Capacitate SSD: 256 GB</li>
-                    <li>Model: UHD</li>
-                </td>
-                <td>
-                    <li>Diagonala: 15.6 inch</li>
-                    <li>Familie: Ryzen 5</li>
-                    <li>Frecventa: 2,1 GHz</li>
-                    <li>Capacitate: 8 GB</li>
-                    <li>Capacitate SSD: 256 GB</li>
-                    <li> Model: Vega 8</li>
-                </td>
-            </tr>
-            <tr class="price">
-                <td>4.098,99 RON</td>
-                <td>2.898,99 RON</td>
-                <td>3.198,99 RON</td>
-                <td>3.498,99 RON</td>
-                <td>2.698,99 RON</td>
-            </tr>
-            <tr class="price">
-                <td>
-                    <p id="addbtn"><button>Adauga in cos</button></p>
-                </td>
-                <td>
-                    <p id="addbtn"><button>Adauga in cos</button></p>
-                </td>
-                <td>
-                    <p id="addbtn"><button>Adauga in cos</button></p>
-                </td>
-                <td>
-                    <p id="addbtn"><button>Adauga in cos</button></p>
-                </td>
-                <td>
-                    <p id="addbtn"><button>Adauga in cos</button></p>
-                </td>
-            </tr>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-          </table>
-        
-        
-                    
-                    
-                            
-                    </body>
-</html>
+
+<!DOCTYPE html><html class=''>
+<head><script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/RSH87/pen/RagqEv?limit=all&page=50&q=contact+" />
+
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.2.4/css/simple-line-icons.min.css'>
+    <link rel="stylesheet" href="css/index.css">
+</head><body>
+<nav>
+    <div class='mini'>
+        <p class='products'>Empty</p>
+        <p class='names'></p>
+        <p class='miniprice'></p>
+    </div>
+    <ul class="leftnav">
+
+        <li class="laptop-hover"><a href="">Laptop</a>
+            <div class="laptop-drop-content">
+                <a href="laptop-notebook">Notebook/Laptop</a>
+                <a href="laptop-gaming">Laptop Gaming</a>
+                <a href="memorii-notebook">Memorii Notebook/Laptop</a>
+            </div>
+        </li>
+        <li class="laptop-hover"><a href="">Sisteme Gaming & Office</a>
+            <div class="laptop-drop-content">
+                <a href="pc_scoala">PC Scoala Online</a>
+                <a href="pc_gaming">PC Gaming</a>
+            </div>
+        </li>
+        <li class="laptop-hover"><a href="componente">Componente</a></li>
+    </ul>
+    <ul class="navlogo"><a href="index"><img class="logo" src="images/logo.png"></a></ul>
+    <ul class="rightnav">
+        <li><a href="userDetails">Detalii cont</a></li>
+        <li><a href="login">Logare</a></li>
+        <li><a href="register">Inregistrare</a></li>
+    </ul>
+    <div  >
+        <a href="cart" class='cart icon-basket'></a>
+    </div>
+</nav>
+<div class='mainDiv'>
+
+</div>
+
+
+</body></html>

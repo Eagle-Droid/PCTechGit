@@ -1,0 +1,376 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<!DOCTYPE html><html class=''>
+<head><script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/RSH87/pen/RagqEv?limit=all&page=50&q=contact+" />
+
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.2.4/css/simple-line-icons.min.css'>
+    <style class="cp-pen-styles">@import url(https://fonts.googleapis.com/css?family=Nunito:400,300,700);
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #0b0b0b;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    nav {
+        position: fixed;
+        z-index: 999;
+        width: 100%;
+        height: 70px;
+        background-color: #ffffff;
+        line-height: 70px;
+
+    }
+    nav .mini {
+        position: fixed;
+        top: 80px;
+        right: 10px;
+        background: #FFF;
+        padding: 40px;
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transition: opacity .2s ease .2s;
+        transition: opacity .2s ease .2s;
+    }
+    nav .mini.visible {
+        padding: 40px;
+        opacity: 1;
+        visibility: visible;
+    }
+    nav .mini .products {
+        font-weight: bold;
+        font-size: 14px;
+    }
+    nav .mini p {
+        font-size: 11px;
+        display: block;
+        margin: 0;
+        padding: 0;
+        line-height: 20px;
+    }
+    nav .cart {
+        position: relative;
+        float: right;
+        margin-right: 50px;
+        height: 20px;
+        line-height: 70px;
+        font-size: 28px;
+        height: 100%;
+        cursor: pointer;
+    }
+    nav .cart span {
+        height: 100%;
+        float: left;
+        margin-right: 20px;
+        opacity: 1;
+        color: #fff;
+        font-size: 18px;
+        font-family: 'Nunito', sans-serif;
+    }
+    nav .cart span.updateQuantity:before, nav .cart span.updateQuantity:after {
+        top: 0;
+        bottom: 0;
+        opacity: 1;
+        width: 30px;
+        -webkit-transition: all .2s ease, top .3s ease .4s, bottom .3s ease .4s;
+        transition: all .2s ease, top .3s ease .4s, bottom .3s ease .4s;
+    }
+    nav .cart span.update {
+        -webkit-transition: color .2s ease .6s;
+        transition: color .2s ease .6s;
+        color: #000;
+    }
+    nav .cart span.update:before {
+        top: -30px;
+        width: 30px;
+        opacity: 1;
+        -webkit-transition: all .2s ease, top .3s ease .4s, bottom .3s ease .4s;
+        transition: all .2s ease, top .3s ease .4s, bottom .3s ease .4s;
+    }
+    nav .cart span.update:after {
+        top: 30px;
+        width: 30px;
+        opacity: 1;
+        -webkit-transition: all .2s ease, top .3s ease .4s, bottom .3s ease .4s;
+        transition: all .2s ease, top .3s ease .4s, bottom .3s ease .4s;
+    }
+    nav .cart span:before, nav .cart span:after {
+        content: "";
+        position: absolute;
+        width: 0px;
+        height: 2px;
+        background-color: #0b0b0b;
+        left: -10px;
+        right: 40px;
+        top: 2px;
+        bottom: 0;
+        margin: auto;
+    }
+    nav ul {
+        float: left;
+        align-items: center;
+    }
+    nav ul li {
+        font-weight: bold;
+        display: inline-block;
+        align-items: baseline;
+        margin-left: 50px;
+        color: #0b0b0b;
+        font-size: 12px;
+
+    }
+
+    .mainDiv {
+        padding: 20px;
+        padding-top: 100px;
+        text-align: center;
+    }
+    .mainDiv .product {
+        position: relative;
+        overflow: hidden;
+        width: 200px;
+        height: 240px;
+        display: inline-block;
+        border-radius: 4px;
+        background-color: rgba(255, 255, 255, 0.45);
+        margin: 20px;
+        padding: 15px;
+    }
+    .mainDiv .product img {
+        position: relative;
+        top: -15px;
+        left: -15px;
+
+
+        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;
+    }
+    .mainDiv .product img:hover {
+        -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
+        clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    .mainDiv .product h2 {
+        text-align: left;
+        color: #fff;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 4px;
+    }
+    .mainDiv .product .description {
+        text-align: left;
+        font-size: 11px;
+        color: #fff;
+        max-height: 23px;
+        overflow: hidden;
+    }
+    .mainDiv .product .price {
+        text-align: right;
+        font-size: 18px;
+        color: #fff;
+        margin-top: 6px;
+    }
+    .mainDiv .product .btn {
+        position: absolute;
+        font-size: 11px;
+        font-weight: bold;
+        float: right;
+        padding: 10px;
+        border: 2px solid #00fefe;
+        border-radius: 20px;
+        bottom: 10px;
+        right: 10px;
+        color: #00fefe;
+        cursor: pointer;
+        overflow: hidden;
+        -webkit-transition: all .2s ease;
+        transition: all .2s ease;
+    }
+    .mainDiv .product .btn.ok {
+        background-color: rgba(0, 254, 254, 0.4);
+        color: #fff;
+    }
+    .mainDiv .product .btn.ok:after {
+        content: "\e080";
+        color: #fff;
+    }
+    .mainDiv .product .btn:hover {
+        padding-right: 25px;
+    }
+    .mainDiv .product .btn:hover:after {
+        margin-left: 5px;
+    }
+    .mainDiv .product .btn:after {
+        font-family: 'simple-line-icons';
+        content: "\e095";
+        -webkit-transition: all .2s ease;
+        transition: all .2s ease;
+        position: absolute;
+        color: #00fefe;
+        margin-left: 30px;
+        transition: all .2s ease;
+    }
+    .mainDiv .product .quickview {
+        position: absolute;
+        bottom: 20px;
+        font-size: 11px;
+        color: #fff;
+        cursor: pointer;
+    }
+    .mainDiv .product .quickview:before {
+        font-family: 'simple-line-icons';
+        content: "\e05d";
+        margin-right: 3px;
+    }
+
+    .quickviewmainDiv {
+        position: fixed;
+        height: 100vh;
+        width: 400px;
+        background: rgba(0, 0, 0, 0.9);
+        top: 70px;
+        right: -100%;
+        -webkit-transition: all .3s ease;
+        transition: all .3s ease;
+        padding: 30px;
+        color: #fff;
+    }
+    .quickviewmainDiv .close {
+        height: 20px;
+        width: 20px;
+        float: right;
+        cursor: pointer;
+    }
+    .quickviewmainDiv .close:before, .quickviewmainDiv .close:after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 2px;
+        background-color: #ffF;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    .quickviewmainDiv .close:after {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+    .quickviewmainDiv .headline {
+        margin-bottom: 30px;
+        font-size: 18px;
+    }
+    .quickviewmainDiv .description {
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+    .quickviewmainDiv img {
+        display: inline-block;
+        border-radius: 4px;
+        margin: 5px;
+    }
+    .quickviewmainDiv.active {
+        right: 0;
+    }
+    .logo{
+width: 75px;
+
+    }
+    .navlogo{
+
+       position: absolute;
+        left: 50%;
+        transform: translatex(-50%);
+
+    }
+    </style></head><body>
+<nav>
+    <div class='mini'>
+        <p class='products'>Empty</p>
+        <p class='names'></p>
+        <p class='miniprice'></p>
+    </div>
+    <ul>
+
+        <li>Home</li>
+        <li>Webshop</li>
+        <li>Contact</li>
+    </ul>
+    <ul class="navlogo"><img class="logo" src="images/logo.png"></ul>
+    <div class='cart icon-basket'>
+        <span class='number'>1</span>
+    </div>
+</nav>
+<div class='mainDiv'>
+    <div class='product'>
+        <img src='https://placeimg.com/200/100'>
+        <h2 class='header'>Product Name</h2>
+        <p class='description'>Nullam posuere turpis vel lacinia luctus. Donec in efficitur neque. Curabitur consectetur non ipsum in eleifend. Praesent id velit in nisi maximus porta nec vitae odio. Proin vitae magna a massa accumsan venenatis. Donec semper, sem in ullamcorper bibendum, mauris sem imperdiet lorem, tempor aliquet ligula lorem sit amet nibh. Suspendisse potenti.</p>
+        <p class='price'>231,-</p>
+        <div class='btn'>Add to cart</div>
+
+    </div>
+
+</div>
+<div class='quickviewmainDiv'>
+    <div class='close'></div>
+    <h2 class='headline'></h2>
+    <p class='description'></p>
+    <img src='https://placeimg.com/100/100'>
+    <img src='https://placeimg.com/100/100'>
+    <img src='https://placeimg.com/100/100'>
+</div>
+<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script >var cartCount = 0,
+    buy = $('.btn'),
+    span = $('.number'),
+    cart = $('.cart'),
+    quickview = $('.quickviewmainDiv'),
+    quickViewBtn = $('.quickview'),
+    close = $('.quickviewmainDiv .close'),
+    minicart = [],
+    totalPrice = [],
+    miniCartPrice;
+
+buy.on('click', addToCart);
+quickViewBtn.on('click', quickView);
+cart.on('click', showMiniCart);
+close.on('click', function(){
+    quickview.removeClass('active');
+});
+
+function quickView() {
+    var description = $(this).parent().find('.description').text(),
+        header = $(this).parent().find('.header').text(),
+        price = $(this).find('.price'),
+        quickViewHeader = $('.quickviewmainDiv .headline'),
+        quickViewDescription = $('.quickviewmainDiv .description');
+    clearTimeout(timeQuick);
+    if(quickview.hasClass('active')){
+        quickview.removeClass('active');
+        var timeQuick = setTimeout(function(){
+            quickview.addClass('active');
+        }, 300);
+    } else{
+        quickview.addClass('active');
+    }
+
+    quickViewHeader.text(header);
+    quickViewDescription.text(description);
+}
+
+function showMiniCart() {
+    $('.mini').toggleClass('visible');
+}
+
+
+//# sourceURL=pen.js
+</script>
+</body></html>
