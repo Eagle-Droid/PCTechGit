@@ -15,8 +15,9 @@ public class ProductDAO {
     public List<Product> findAll(){
         return jdbcTemplate.query("select * from product", new ProductRowMapper());
     }
-    public List<Product> findById(Integer id){
-        return jdbcTemplate.query("select * from product where id ="+id, new ProductRowMapper());
+    public Product findById(Integer id){
+        ProductRowMapper productRowMapper = new ProductRowMapper();
+        return jdbcTemplate.query("select * from product where id ="+id, productRowMapper).get(0);
     }
     public  List<Specification> findByForeignKey(Integer foreignKey){
         return jdbcTemplate.query("select * from pctech.description inner join pctech.product on pctech.description.foreign_key = pctech.product.id where pctech.product.id ="+ foreignKey +";", new SpecsRowMapper());

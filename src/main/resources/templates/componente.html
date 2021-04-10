@@ -40,7 +40,14 @@
         <li><a href="register">Inregistrare</a></li>
     </ul>
     <div  >
-        <a href="cart" class='cart icon-basket'></a>
+        <a href="cart" class='cart icon-basket'>
+            <label style="
+        font-size: 15px;
+            top: -15px;
+            position: absolute;
+" th:text="${shoppingCartSize}"></label>
+        </a>
+
     </div>
 </nav>
 <div class='mainDiv'>
@@ -60,7 +67,6 @@
     position: absolute;
     bottom: 5px;
 ">RON</p>
-        <div class='btn' >Add to cart</div>
 
     </div>
 </div>

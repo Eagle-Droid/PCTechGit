@@ -2,6 +2,7 @@ package onlineShop.PCTech.Controller;
 
 import onlineShop.PCTech.Database.Product;
 import onlineShop.PCTech.Database.ProductDAO;
+import onlineShop.PCTech.Security.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,8 @@ public class mainController {
 
     @Autowired
     ProductDAO productDAO;
+    @Autowired
+    UserSession userSession;
 
     @GetMapping("/index")
     public ModelAndView frontpage() {
@@ -26,6 +29,11 @@ public class mainController {
         List<Product> products = productDAO.findAll();
         ModelAndView modelAndView = new ModelAndView("componente");
         modelAndView.addObject("products",products);
+        int productCount = 0;
+        for(int quantityForProduct : userSession.getShoppigCart().values()){
+            productCount = productCount +quantityForProduct;
+        }
+        modelAndView.addObject("shoppingCartSize",productCount);
 
         return modelAndView;
     }
@@ -66,10 +74,6 @@ public class mainController {
         return modelAndViewComponente;
     }
 
-    @GetMapping("/cart")
-    public ModelAndView cart() {
-        ModelAndView modelAndViewComponente = new ModelAndView("cart");
-        return modelAndViewComponente;
-    }
+
 
 }
