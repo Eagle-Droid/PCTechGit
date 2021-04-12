@@ -25,6 +25,9 @@
     <link rel='stylesheet prefetch'
           href='https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.2.4/css/simple-line-icons.min.css'>
     <link rel="stylesheet" href="css/index.css">
+    <script src=
+                    "https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+    </script>
 </head>
 <body>
 <nav>
@@ -91,15 +94,18 @@
 
                                         </div>
                                         <div class="price" th:text="${x.price}">
-                                            <p>RON</p>
+                                            <p th:text="${x.price}"> RON</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="product-count">
-                                    <form action="#" class="count-inlineflex">
-                                        <input type="text" name="quantity" th:value="${x.quantity}" class="qty">
+                                    <form  class="count-inlineflex">
+                                        <div class="qtyminus">-</div>
+
+                                        <input type="number" th:value="${x.quantity}" class="qty" th:id="2" >
                                         <div class="qtyplus">+</div>
                                     </form>
+
                                 </td>
                                 <td>
                                     <div class="total">
@@ -119,7 +125,11 @@
                 <div class="col-lg-4">
                     <div class="cart-totals">
                         <h3>Cart Totals</h3>
-                        <form action="#" method="get" accept-charset="utf-8">
+                        <form action="/remove-from-cart" method="post" accept-charset="utf-8">
+                            <label hidden th:each="x : ${form}">
+                                <input type number hidden th:value="${x.id}" name="productId" >
+                                <input  hidden name="quantity" type="number" class="qty" id="1" th:value="${x.quantity}">
+                            </label>
                             <table>
                                 <tbody>
                                 <tr>
@@ -137,10 +147,12 @@
                                 </tbody>
                             </table>
                             <div class="btn-cart-totals">
-                                <a href="#" class="update round-black-btn" title="">Update Cart</a>
-                                <a href="#" class="checkout round-black-btn" title="">Proceed to Checkout</a>
+
+
+                                <button type="submit" onclick="gfg_Run()"><a href="#" class="update round-black-btn" title="" >Update Cart</a></button>
+                                <button id="setText" type="button" onclick="gfg_Run()"><a href="#" class="checkout round-black-btn" title="">Proceed to Checkout</a></button>
                             </div>
-                            <!-- /.btn-cart-totals -->
+
                         </form>
                         <!-- /form -->
                     </div>
@@ -151,6 +163,14 @@
         </div>
     </div>
 </div>
+<script>
+    var el_down = document.getElementById("2");
+    var inputF = document.getElementById("1");
+
+    function gfg_Run() {
+        inputF.value = el_down.value;
+    }
+</script>
 <script src="myAddToCartScriptt.js"></script>
 </body>
 </html>

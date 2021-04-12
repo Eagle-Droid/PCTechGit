@@ -6,6 +6,7 @@ import org.springframework.web.context.annotation.SessionScope;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
 @SessionScope
@@ -36,5 +37,15 @@ public class UserSession {
         }else{
             shoppigCart.put(id,1);
         }
+    }
+
+    //nu merge
+    public void removeProduct(Integer id,Integer qty){
+        if(qty==0){
+            shoppigCart.remove(id);
+        }else{
+            shoppigCart.replace(id, qty);
+        }
+        System.out.println(shoppigCart);
     }
 }
