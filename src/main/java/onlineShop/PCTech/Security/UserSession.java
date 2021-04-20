@@ -38,14 +38,19 @@ public class UserSession {
             shoppigCart.put(id,1);
         }
     }
+        public void clearShoppingCart(){
+            shoppigCart.clear();
+        }
 
-    //nu merge
-    public void removeProduct(Integer id,Integer qty){
+   //hashmap<id qty>
+    public void updateProduct(Integer id, Integer qty){
         if(qty==0){
             shoppigCart.remove(id);
         }else{
             shoppigCart.replace(id, qty);
         }
-        System.out.println(shoppigCart);
     }
+        public void logoff(){
+        userId= 0;
+        }
 }

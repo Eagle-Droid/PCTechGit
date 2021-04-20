@@ -22,7 +22,8 @@ public class UserController {
 
     @Autowired
     UserSession userSession;
-
+    @Autowired
+    mainController mainController;
 
     @PostMapping("/register-form")
     public ModelAndView register(@RequestParam("email") String email,
@@ -45,12 +46,6 @@ public class UserController {
             return new ModelAndView("login");
         }
 
-    }
-
-    @GetMapping("/register")
-    public ModelAndView register() {
-
-        return new ModelAndView("register");
     }
 
     @GetMapping("/login-form")
@@ -79,9 +74,42 @@ public class UserController {
 
     @GetMapping("/userDetails")
     public ModelAndView userDetails(HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView("userDetails");
         if (userSession.getUserId() == 0) {
             return new ModelAndView("redirect:/login");
         }
-        return new ModelAndView("userDetails");
+
+        isLogged(modelAndView, userSession);
+        int productCount = 0;
+        for(int quantityForProduct : userSession.getShoppigCart().values()){
+            productCount = productCount +quantityForProduct;
+        }
+        return new ModelAndView("userDetails").addObject("shoppingCartSize",productCount);
+    }
+
+    public static void isLogged(ModelAndView modelAndView, UserSession userSession) {
+        String userLogged;
+        String userRegistered = "";
+        String href;
+        String hidden="";
+        if (userSession.getUserId() == 0){
+            userLogged="Logare";
+            userRegistered="Inregistare";
+            href="/login";
+        }else{
+            userLogged="Delogare";
+            href="/logout";
+            hidden="hidden";
+        }
+        modelAndView.addObject("hidden",hidden);
+        modelAndView.addObject("userLogged",userLogged);
+        modelAndView.addObject("userRegistered",userRegistered);
+        modelAndView.addObject("href",href);
+    }
+
+    @GetMapping("/logout")
+    public ModelAndView logout(){
+        userSession.logoff();
+        return new ModelAndView("redirect:/");
     }
 }

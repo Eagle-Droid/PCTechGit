@@ -33,11 +33,11 @@
         </li>
         <li class="laptop-hover"><a href="componente">Componente</a></li>
     </ul>
-    <ul class="navlogo"><a href="index"><img class="logo" src="images/logo.png"></a></ul>
+    <ul class="navlogo"><a href="/"><img class="logo" src="images/logo.png"></a></ul>
     <ul class="rightnav">
         <li><a href="userDetails">Detalii cont</a></li>
-        <li><a href="login">Logare</a></li>
-        <li><a href="register">Inregistrare</a></li>
+        <li><a th:href="${href}" th:text="${userLogged}"></a></li>
+        <li><a th:type="${hidden}" href="register" th:text="${userRegistered}"></a></li>
     </ul>
     <div  >
         <a href="cart" class='cart icon-basket'>

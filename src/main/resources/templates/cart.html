@@ -53,22 +53,25 @@
         </li>
         <li class="laptop-hover"><a href="componente">Componente</a></li>
     </ul>
-    <ul class="navlogo"><a href="index"><img class="logo" src="images/logo.png"></a></ul>
+    <ul class="navlogo"><a href="/"><img class="logo" src="images/logo.png"></a></ul>
     <ul class="rightnav">
         <li><a href="userDetails">Detalii cont</a></li>
-        <li><a href="login">Logare</a></li>
-        <li><a href="register">istrare</a></li>
+        <li><a th:href="${href}" th:text="${userLogged}"></a></li>
+        <li><a th:type="${hidden}" href="register" th:text="${userRegistered}"></a></li>
     </ul>
-    <div class='cart icon-basket'>
-
-        <label style="
+    <div  >
+        <a href="cart" class='cart icon-basket'>
+            <label style="
         font-size: 15px;
             top: -15px;
             position: absolute;
-">1</label>
+" th:text="${shoppingCartSize}"></label>
+        </a>
+
     </div>
 </nav>
 <div class='mainDiv'>
+    <form action="/remove-from-cart" method="post" accept-charset="utf-8">
     <div class="cart-wrap">
         <div class="container">
             <div class="row">
@@ -83,6 +86,8 @@
                                 <th>Total</th>
                             </tr>
                             </thead>
+
+                                <button type="submit">ACTUALIZEAZA COS</button>
                             <tbody>
                             <tr th:each="x : ${products}">
                                 <td>
@@ -94,27 +99,32 @@
 
                                         </div>
                                         <div class="price" th:text="${x.price}">
-                                            <p th:text="${x.price}"> RON</p>
+                                            <p th:text="${x.price}" style="font-weight: bold"></p>
                                         </div>
+                                        <p style="font-weight: bold;position: absolute;font-size: 10px;color: white;right: 350px;">RON</p>
                                     </div>
                                 </td>
                                 <td class="product-count">
-                                    <form  class="count-inlineflex">
-                                        <div class="qtyminus">-</div>
-
-                                        <input type="number" th:value="${x.quantity}" class="qty" th:id="2" >
-                                        <div class="qtyplus">+</div>
-                                    </form>
+                                    <div  class="count-inlineflex"  method="post">
+                                        <!--<div class="qtyminus">-</div>-->
+                                        <input type number hidden th:value="${x.id}" name="productId" >
+                                        <input type="number" min="0" name="quantity" th:value="${x.quantity}" class="qty" th:id="2" >
+                                       <!-- <div class="qtyplus">+</div>-->
+                                        <button type="submit">Actualizeaza</button>
+                                    </div>
 
                                 </td>
                                 <td>
-                                    <div class="total">
-                                        $6,250.00
+                                    <div class="total" th:text="${x.total}">
+
                                     </div>
+                                    <p style="
+    font-weight: bold;
+    color: white;
+">RON</p>
                                 </td>
 
                             </tr>
-
                             </tbody>
                         </table>
 
@@ -125,35 +135,23 @@
                 <div class="col-lg-4">
                     <div class="cart-totals">
                         <h3>Cart Totals</h3>
-                        <form action="/remove-from-cart" method="post" accept-charset="utf-8">
-                            <label hidden th:each="x : ${form}">
-                                <input type number hidden th:value="${x.id}" name="productId" >
-                                <input  hidden name="quantity" type="number" class="qty" id="1" th:value="${x.quantity}">
-                            </label>
                             <table>
                                 <tbody>
-                                <tr>
-                                    <td>Subtotal</td>
-                                    <td class="subtotal">$2,589.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Shipping</td>
-                                    <td class="free-shipping">Free Shipping</td>
-                                </tr>
                                 <tr class="total-row">
                                     <td>Total</td>
-                                    <td class="price-total">$1,591.00</td>
+                                    <td class="price-total" th:text="${totalPrice}" ></td>
+                                    <td>RON</td>
                                 </tr>
                                 </tbody>
                             </table>
                             <div class="btn-cart-totals">
 
 
-                                <button type="submit" onclick="gfg_Run()"><a href="#" class="update round-black-btn" title="" >Update Cart</a></button>
+                                <button type="submit"><a   class="update round-black-btn" title="" >Update Cart</a></button>
                                 <button id="setText" type="button" onclick="gfg_Run()"><a href="#" class="checkout round-black-btn" title="">Proceed to Checkout</a></button>
                             </div>
 
-                        </form>
+
                         <!-- /form -->
                     </div>
                     <!-- /.cart-totals -->
@@ -162,6 +160,13 @@
             </div>
         </div>
     </div>
+    </form>
+    <form>
+        <input>
+        <input>
+        <input>
+        <button type="submit"></button>
+    </form>
 </div>
 <script>
     var el_down = document.getElementById("2");

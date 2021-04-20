@@ -18,16 +18,27 @@ public class mainController {
     @Autowired
     UserSession userSession;
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public ModelAndView frontpage() {
         ModelAndView modelAndView = new ModelAndView("index");
+        loggedUser(modelAndView);
+        int productCount = 0;
+        for(int quantityForProduct : userSession.getShoppigCart().values()){
+            productCount = productCount +quantityForProduct;
+        }
+        modelAndView.addObject("shoppingCartSize",productCount);
         return modelAndView;
     }
 
     @GetMapping("/componente")
     public ModelAndView componente() {
-        List<Product> products = productDAO.findAll();
         ModelAndView modelAndView = new ModelAndView("componente");
+        List<Product> products = productDAO.findByCategory(6);
+        return getModelAndView(modelAndView, products);
+    }
+
+    public ModelAndView getModelAndView(ModelAndView modelAndView, List<Product> products) {
+        loggedUser(modelAndView);
         modelAndView.addObject("products",products);
         int productCount = 0;
         for(int quantityForProduct : userSession.getShoppigCart().values()){
@@ -38,42 +49,67 @@ public class mainController {
         return modelAndView;
     }
 
+    public void loggedUser(ModelAndView modelAndView) {
+        UserController.isLogged(modelAndView, userSession);
+    }
+
     @GetMapping("/laptop-gaming")
     public ModelAndView laptopGaming() {
-        ModelAndView modelAndViewComponente = new ModelAndView("laptop-gaming");
-        return modelAndViewComponente;
+        ModelAndView modelAndView = new ModelAndView("componente");
+        List<Product> products = productDAO.findByCategory(2);
+        return getModelAndView(modelAndView, products);
     }
 
     @GetMapping("/laptop-notebook")
     public ModelAndView laptopNotebook() {
-        ModelAndView modelAndViewComponente = new ModelAndView("laptop-notebook");
-        return modelAndViewComponente;
+        ModelAndView modelAndView = new ModelAndView("componente");
+        List<Product> products = productDAO.findByCategory(1);
+        return getModelAndView(modelAndView, products);
     }
 
     @GetMapping("/login")
     public ModelAndView login() {
-        ModelAndView modelAndViewComponente = new ModelAndView("login");
-        return modelAndViewComponente;
+        ModelAndView modelAndView = new ModelAndView("login");
+        int productCount = 0;
+        for(int quantityForProduct : userSession.getShoppigCart().values()){
+            productCount = productCount +quantityForProduct;
+        }
+        modelAndView.addObject("shoppingCartSize",productCount);
+        loggedUser(modelAndView);
+        return modelAndView;
     }
 
     @GetMapping("/memorii-notebook")
     public ModelAndView memoriiNotebook() {
-        ModelAndView modelAndViewComponente = new ModelAndView("memorii-notebook");
-        return modelAndViewComponente;
+        ModelAndView modelAndView = new ModelAndView("componente");
+        List<Product> products = productDAO.findByCategory(3);
+        return getModelAndView(modelAndView, products);
     }
 
     @GetMapping("/pc_gaming")
     public ModelAndView pcGaming() {
-        ModelAndView modelAndViewComponente = new ModelAndView("pc_gaming");
-        return modelAndViewComponente;
+        ModelAndView modelAndView = new ModelAndView("componente");
+        List<Product> products = productDAO.findByCategory(5);
+        return getModelAndView(modelAndView, products);
     }
 
     @GetMapping("/pc_scoala")
     public ModelAndView pcScoala() {
-        ModelAndView modelAndViewComponente = new ModelAndView("pc_scoala");
-        return modelAndViewComponente;
+        ModelAndView modelAndView = new ModelAndView("componente");
+        List<Product> products = productDAO.findByCategory(4);
+        return getModelAndView(modelAndView, products);
     }
-
+    @GetMapping("/register")
+    public ModelAndView register() {
+        ModelAndView modelAndView = new ModelAndView("register");
+        int productCount = 0;
+        for(int quantityForProduct : userSession.getShoppigCart().values()){
+            productCount = productCount +quantityForProduct;
+        }
+        modelAndView.addObject("shoppingCartSize",productCount);
+        loggedUser(modelAndView);
+        return modelAndView;
+    }
 
 
 }

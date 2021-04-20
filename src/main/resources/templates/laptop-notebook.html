@@ -40,11 +40,33 @@
         <li><a href="register">Inregistrare</a></li>
     </ul>
     <div  >
-        <a href="cart" class='cart icon-basket'></a>
+        <a href="cart" class='cart icon-basket'>
+            <label style="
+        font-size: 15px;
+            top: -15px;
+            position: absolute;
+" th:text="${shoppingCartSize}"></label>
     </div>
 </nav>
 <div class='mainDiv'>
+    <div th:each="x : ${products}" class='product'>
+        <form action="/product" method="get">
+            <a onclick="this.parentNode.submit();"><img th:src="${x.photoFile1}"></a>
+            <input hidden name="id" th:value="${x.id}">
+        </form>
+        <h2 class='header' th:text="${x.name}"></h2>
+        <p class='description' th:text="${x.description}"></p>
+        <p class='price' th:text="${x.price}"> RON</p>
+        <p class="price1" style="
+    text-align: left;
+    font-size: 12px;
+    color: #fff;
+    margin-top: 6px;
+    position: absolute;
+    bottom: 5px;
+">RON</p>
 
+    </div>
 </div>
 
 

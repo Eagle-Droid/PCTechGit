@@ -425,7 +425,8 @@ text-decoration: none;
 .product-count .qty {
     width: 60px;
     text-align: center;
-    border: none;
+    border: solid 2px #ccc;
+    border-radius: 20px;
 }
 .count-inlineflex {
     display: inline-flex;
