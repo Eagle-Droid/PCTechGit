@@ -18,6 +18,7 @@ public class mainController {
     @Autowired
     UserSession userSession;
 
+
     @GetMapping("/")
     public ModelAndView frontpage() {
         ModelAndView modelAndView = new ModelAndView("index");
@@ -27,8 +28,10 @@ public class mainController {
             productCount = productCount +quantityForProduct;
         }
         modelAndView.addObject("shoppingCartSize",productCount);
-        return modelAndView;
+        List<Product> products = productDAO.findByCategory(0);
+        return getModelAndView(modelAndView, products);
     }
+
 
     @GetMapping("/componente")
     public ModelAndView componente() {
@@ -50,7 +53,7 @@ public class mainController {
     }
 
     public void loggedUser(ModelAndView modelAndView) {
-        UserController.isLogged(modelAndView, userSession);
+        UserController.isLoggedView(modelAndView, userSession);
     }
 
     @GetMapping("/laptop-gaming")
@@ -70,13 +73,19 @@ public class mainController {
     @GetMapping("/login")
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView("login");
+        UserController.isLoggedView(modelAndView, userSession);
         int productCount = 0;
         for(int quantityForProduct : userSession.getShoppigCart().values()){
             productCount = productCount +quantityForProduct;
         }
         modelAndView.addObject("shoppingCartSize",productCount);
-        loggedUser(modelAndView);
-        return modelAndView;
+        if(userSession.getUserId()==0){
+
+            return modelAndView;
+        }
+        else{
+            return new ModelAndView("redirect:/");
+        }
     }
 
     @GetMapping("/memorii-notebook")

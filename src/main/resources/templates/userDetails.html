@@ -64,34 +64,44 @@
     <div class="well">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#home" data-toggle="tab">Profile</a></li>
-            <li><a href="#profile" data-toggle="tab">Password</a></li>
         </ul>
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane active in" id="home">
-                <form id="tab">
+                <form id="tab" action="/updateUserDetails" method="get">
                     <label>First Name</label>
-                    <input type="text" value="" class="input-xlarge">
+                    <input type="text" name="firstName" th:value="${firstName}" class="input-xlarge">
                     <label>Last Name</label>
-                    <input type="text" value="" class="input-xlarge">
+                    <input type="text" name="lastName" th:value="${lastName}" class="input-xlarge">
                     <label>Address</label>
-                    <textarea value="" class="input-xlarge">
+                    <textarea th:text="${address}" name="address" class="input-xlarge">
             </textarea>
                     <div>
                         <button class="btn btn-primary">Update</button>
                     </div>
                 </form>
-            </div>
-            <div class="tab-pane fade" id="profile">
-                <form id="tab2">
+                <form id="tab2" action="/userDetails" method="post">
                     <label>Old password</label>
-                    <input type="password" class="input-xlarge">
+                    <input type="password" name="password" class="input-xlarge">
                     <label>New Password</label>
-                    <input type="password" class="input-xlarge">
+                    <input type="password" name="newPassword" class="input-xlarge">
+                    <p th:text="${message}" style="color: #007ccc"></p>
                     <div>
                         <button class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>
+            <!--<div class="tab-pane fade" id="profile">
+                <form id="tab2" action="/updatePassword" method="post">
+                    <label>Old password</label>
+                    <input type="password" name="password" class="input-xlarge">
+                    <label>New Password</label>
+                    <input type="password" name="newPassword" class="input-xlarge">
+                    <p th:text="${message}" style="color: #FFFFFF"></p>
+                    <div>
+                        <button class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>-->
         </div>
     </div>
 </div>

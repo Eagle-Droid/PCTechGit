@@ -12,7 +12,17 @@ import java.util.Map;
 @SessionScope
 public class UserSession {
     private int userId;
+    private String email;
+
         HashMap<Integer, Integer> shoppigCart= new HashMap<>();
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public int getUserId() {
         return userId;
@@ -52,5 +62,6 @@ public class UserSession {
     }
         public void logoff(){
         userId= 0;
+        shoppigCart.clear();
         }
 }

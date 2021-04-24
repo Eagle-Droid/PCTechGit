@@ -1,8 +1,6 @@
 package onlineShop.PCTech.Controller;
 
-import onlineShop.PCTech.Database.Product;
-import onlineShop.PCTech.Database.ProductDAO;
-import onlineShop.PCTech.Database.Specification;
+import onlineShop.PCTech.Database.*;
 import onlineShop.PCTech.Security.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,10 +24,15 @@ public class ProductController {
     @Autowired
     mainController MainController;
 
+    @Autowired
+    UserService userService;
+    @Autowired
+    OrderDAO orderDAO;
+
     @GetMapping("/product")
     public ModelAndView product(@RequestParam("id") Integer id) {
         ModelAndView modelAndView = new ModelAndView("product");
-        UserController.isLogged(modelAndView,userSession);
+        UserController.isLoggedView(modelAndView,userSession);
         Product product = productDAO.findById(id);
         modelAndView.addObject("product", product);
         List<Specification> specifications = productDAO.findByForeignKey(id);
@@ -55,11 +58,23 @@ public class ProductController {
 
     @GetMapping("cart")
     public ModelAndView cart() {
+
         List<CartProduct> productsFromCart = new ArrayList<>();
         DecimalFormat price= new DecimalFormat("#.##");
         double totalPrice=0;
         ModelAndView modelAndView = new ModelAndView("cart");
-        UserController.isLogged(modelAndView,userSession);
+        UserController.isLoggedView(modelAndView,userSession);
+
+        int productCount = 0;
+        for (int quantityForProduct : userSession.getShoppigCart().values()) {
+            productCount = productCount + quantityForProduct;
+        }
+        if(userSession.getShoppigCart().size()==0){
+            ModelAndView modelAndViewEmptyCart= new ModelAndView("emptyCart");
+            modelAndViewEmptyCart.addObject("shoppingCartSize", productCount);
+            UserController.isLoggedView(modelAndViewEmptyCart,userSession);
+            return modelAndViewEmptyCart;
+        }
         for (Map.Entry<Integer, Integer> entry : userSession.getShoppigCart().entrySet()) {
             int quantity = entry.getValue();
             int productId = entry.getKey();
@@ -75,32 +90,48 @@ public class ProductController {
             productsFromCart.add(cartProduct);
 
         }
-        int productCount = 0;
-        for (int quantityForProduct : userSession.getShoppigCart().values()) {
-            productCount = productCount + quantityForProduct;
+        if(userSession.getUserId()!=0){
+
+            String email = userSession.getEmail();
+            List<User> userList = userService.findByEmail(email);
+            String firstName = userList.get(0).getFirstName();
+            String lastName = userList.get(0).getLastName();
+            String address = userList.get(0).getAddress();
+            modelAndView.addObject("firstName",firstName);
+            modelAndView.addObject("lastName",lastName);
+            modelAndView.addObject("address",address);
         }
+
         modelAndView.addObject("shoppingCartSize", productCount);
         modelAndView.addObject("products", productsFromCart);
         modelAndView.addObject("totalPrice",price.format(totalPrice));
         return modelAndView;
     }
 //nu merge hasmap de id si qty
-    @PostMapping ("/remove-from-cart")
+    @PostMapping (value = "/remove-from-cart",params = {})
     public ModelAndView removeFromCart(@RequestParam("quantity")List<Integer> qty,
                                        @RequestParam("productId") List<Integer> id){
-        System.out.println("IDs=" + id);
-        System.out.println("qtys=" + qty);
 
 
         for(int i=0;i<qty.size();i++){
             Integer quantity= qty.get(i);
             Integer productId= id.get(i);
-            System.out.println(userSession.getShoppigCart());
-            System.out.println(productId);
-            System.out.println(quantity);
             userSession.updateProduct(productId,quantity);
         }
 
+        return new ModelAndView("redirect:/cart");
+    }
+    @PostMapping (value = "/order",params = "totalPrice")
+    public ModelAndView sendOrder(@RequestParam("totalPrice") double total,
+                                  @RequestParam("address") String adress){
+
+        orderDAO.newOrder(userSession.getUserId(), userSession.getShoppigCart(), adress,total);
+        userSession.clearShoppingCart();
+        return new ModelAndView("redirect:/cart");
+    }
+    @GetMapping("/clearer")
+    public ModelAndView clearTheCart(){
+        userSession.clearShoppingCart();
         return new ModelAndView("redirect:/cart");
     }
 }

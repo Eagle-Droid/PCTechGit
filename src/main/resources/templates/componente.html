@@ -53,7 +53,7 @@
 <div class='mainDiv'>
     <div th:each="x : ${products}" class='product'>
         <form action="/product" method="get">
-            <a onclick="this.parentNode.submit();"><img th:src="${x.photoFile1}"></a>
+            <a onclick="this.parentNode.submit();"> <img th:src="${x.photoFile1}"></a>
             <input hidden name="id" th:value="${x.id}">
         </form>
         <h2 class='header' th:text="${x.name}"></h2>

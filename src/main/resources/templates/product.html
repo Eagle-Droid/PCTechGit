@@ -37,7 +37,7 @@
         </li>
         <li class="laptop-hover"><a href="componente">Componente</a></li>
     </ul>
-    <ul class="navlogo"><a href="index"><img class="logo" src="images/logo.png"></a></ul>
+    <ul class="navlogo"><a href="/"><img class="logo" src="images/logo.png"></a></ul>
     <ul class="rightnav">
         <li><a href="userDetails">Detalii cont</a></li>
         <li><a href="login">Logare</a></li>
@@ -63,6 +63,7 @@
     bottom: 50px;
     width: 300px;
     height: 300px;
+    margin-left: 200px;
     ">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -99,6 +100,13 @@
 
         </div>
         <div>
+            <label th:each="x:${product}" th:text="${x.price}  +RON" style="
+    color: white;
+    position: absolute;
+    bottom: 200px;
+    font-size: 40px;
+    margin-left: -10px;
+"></label>
             <form th:each="x:${product}"  method="post" action="/add-to-cart" class="count-inlineflex" style="
     height: auto;
     margin: 0 auto;
@@ -110,6 +118,7 @@
 ">
 
                 <input hidden name="productId" th:value="${x.id}">
+
                 <input type="number" min="1" name="quantity" value="1" class="qty" style="
     width: 30;
     text-align: center;
@@ -142,43 +151,3 @@
 
 </body></html>
 
-<!--
-<form method="post" action="/add-to-cart" class="count-inlineflex" style="
-    height: auto;
-    margin: 0 auto;
-    /* padding: 10px; */
-    position: absolute;
-    top: 420;
-    align-items: center;
-    width: 200;
-">
-
-    <div class="qtyminus" style="
-    font-size: 20;
-    color: white;
-    position: absolute;
-    left: 10;
-    top: 1;
-">-</div>
-    <input type="text" name="quantity" value="1" class="qty" style="
-    width: 30;
-    text-align: center;
-    position: relative;
-    right: -23;
-    border-radius: 20px;
-">
-    <div class="qtyplus" style="
-    position: absolute;
-    left: 60;
-    font-size: 20;
-    color: white;
-">+</div>
-
-    <button type="submit" style="
-    position: absolute;
-    right: 15;
-    border-radius: 30px;
-    background-color: #1d69ab;
-    color: white;
-">Adauga in cos</button>
-</form>-->

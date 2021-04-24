@@ -14,8 +14,8 @@ public class OrderDAO {
     private JdbcTemplate jdbcTemplate;
 
 
-    public void newOrder(int userId, Map<Integer, Integer> productsToQuantity){
-        jdbcTemplate.update("insert into orders values (null,?,?,?)",userId,null,null);
+    public void newOrder(int userId, Map<Integer, Integer> productsToQuantity,String address,double totalPrice){
+        jdbcTemplate.update("insert into orders values (null,?,?,?)",userId,address,totalPrice);
 
         int orderId=jdbcTemplate.queryForObject("select max(id) from orders",Integer.class);
 

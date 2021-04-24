@@ -21,6 +21,9 @@ public class ProductDAO {
 
     }public List<Product> findByCategory(Integer id){
         ProductRowMapper productRowMapper = new ProductRowMapper();
+        if(id==0){
+            return jdbcTemplate.query("select *from product order by rand() limit 10",productRowMapper);
+        }
         return jdbcTemplate.query("select * from product where category_id ="+id, productRowMapper);
     }
     public  List<Specification> findByForeignKey(Integer foreignKey){

@@ -66,28 +66,88 @@ public class UserController {
                 modelAndView.addObject("message", "Email sau parola incorecte");
             } else {
                 userSession.setUserId(userFromDatabase.getId());
+                userSession.setEmail(userFromDatabase.getEmail());
                 modelAndView = new ModelAndView("redirect:/userDetails");//trb sa redirectionez la paginile unui user logat
+
             }
         }
         return modelAndView;
     }
 
-    @GetMapping("/userDetails")
-    public ModelAndView userDetails(HttpServletRequest request) {
+
+    @GetMapping(value = "/userDetails",params = {})
+    public ModelAndView userDetails() {
         ModelAndView modelAndView = new ModelAndView("userDetails");
+        isLoggedView(modelAndView, userSession);
         if (userSession.getUserId() == 0) {
+
             return new ModelAndView("redirect:/login");
         }
-
-        isLogged(modelAndView, userSession);
+        String email = userSession.getEmail();
+        List<User> userList = userService.findByEmail(email);
+        String firstName = userList.get(0).getFirstName();
+        String lastName = userList.get(0).getLastName();
+        String address = userList.get(0).getAddress();
+        modelAndView.addObject("firstName",firstName);
+        modelAndView.addObject("lastName",lastName);
+        modelAndView.addObject("address",address);
         int productCount = 0;
         for(int quantityForProduct : userSession.getShoppigCart().values()){
             productCount = productCount +quantityForProduct;
         }
-        return new ModelAndView("userDetails").addObject("shoppingCartSize",productCount);
+        modelAndView.addObject("shoppingCartSize",productCount);
+        return modelAndView;
     }
+    @GetMapping("/updateUserDetails")
+    public ModelAndView updateUserDetails(@RequestParam(value = "firstName") String firstName,
+                                          @RequestParam(value = "lastName") String lastName,
+                                          @RequestParam(value = "address") String address){
+        userService.updateUser(userSession.getUserId(), firstName,lastName,address);
+        return new ModelAndView("redirect:/userDetails");
 
-    public static void isLogged(ModelAndView modelAndView, UserSession userSession) {
+    }
+    @PostMapping(value = "/userDetails",params = {"password","newPassword"})
+    public ModelAndView updatePassword(@RequestParam(value = "password") String password,
+                                       @RequestParam(value = "newPassword") String newPassword){
+        ModelAndView modelAndView = new ModelAndView("userDetails");
+        isLoggedView(modelAndView, userSession);
+        if (userSession.getUserId() == 0) {
+
+            return new ModelAndView("redirect:/login");
+        }
+        String email = userSession.getEmail();
+        List<User> userList = userService.findByEmail(email);
+        String firstName = userList.get(0).getFirstName();
+        String lastName = userList.get(0).getLastName();
+        String address = userList.get(0).getAddress();
+        modelAndView.addObject("firstName",firstName);
+        modelAndView.addObject("lastName",lastName);
+        modelAndView.addObject("address",address);
+        int productCount = 0;
+        for(int quantityForProduct : userSession.getShoppigCart().values()){
+            productCount = productCount +quantityForProduct;
+        }
+        modelAndView.addObject("shoppingCartSize",productCount);
+        /*return modelAndView;*/
+
+        User userFromDatabase = userList.get(0);
+
+            if(!DigestUtils.md5Hex(password).equals(userFromDatabase.getPassword())){
+                modelAndView.addObject("message", "Parola gresita");
+                return modelAndView;
+            }
+            else{
+                try {
+                    userService.userUpdatePassword(userSession.getUserId(),newPassword);
+                } catch (InvalidPassword invalidPassword) {
+                    String messageException = invalidPassword.getMessage();
+                    modelAndView.addObject("message",messageException);
+                    return  modelAndView;
+                }
+            }
+            return modelAndView;
+    }
+    public static void isLoggedView(ModelAndView modelAndView, UserSession userSession) {
         String userLogged;
         String userRegistered = "";
         String href;

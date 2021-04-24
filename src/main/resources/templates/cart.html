@@ -71,7 +71,7 @@
     </div>
 </nav>
 <div class='mainDiv'>
-    <form action="/remove-from-cart" method="post" accept-charset="utf-8">
+    <form action="/remove-from-cart" method="post" accept-charset="utf-8" id="10">
     <div class="cart-wrap">
         <div class="container">
             <div class="row">
@@ -87,7 +87,6 @@
                             </tr>
                             </thead>
 
-                                <button type="submit">ACTUALIZEAZA COS</button>
                             <tbody>
                             <tr th:each="x : ${products}">
                                 <td>
@@ -98,10 +97,10 @@
                                         <div class="name-product" th:text="${x.name}">
 
                                         </div>
-                                        <div class="price" th:text="${x.price}">
-                                            <p th:text="${x.price}" style="font-weight: bold"></p>
+                                        <div class="price" th:text="${x.price} + RON">
+                                            <p th:text="${x.price} + RON" style="font-weight: bold"></p>
                                         </div>
-                                        <p style="font-weight: bold;position: absolute;font-size: 10px;color: white;right: 350px;">RON</p>
+                                        <!--<p style="font-weight: bold;position: absolute;font-size: 10px;color: white;right: 350px;">RON</p>-->
                                     </div>
                                 </td>
                                 <td class="product-count">
@@ -110,7 +109,6 @@
                                         <input type number hidden th:value="${x.id}" name="productId" >
                                         <input type="number" min="0" name="quantity" th:value="${x.quantity}" class="qty" th:id="2" >
                                        <!-- <div class="qtyplus">+</div>-->
-                                        <button type="submit">Actualizeaza</button>
                                     </div>
 
                                 </td>
@@ -139,7 +137,7 @@
                                 <tbody>
                                 <tr class="total-row">
                                     <td>Total</td>
-                                    <td class="price-total" th:text="${totalPrice}" ></td>
+                                    <td class="price-total" name="totalPrice" th:text="${totalPrice}" ></td>
                                     <td>RON</td>
                                 </tr>
                                 </tbody>
@@ -147,9 +145,11 @@
                             <div class="btn-cart-totals">
 
 
-                                <button type="submit"><a   class="update round-black-btn" title="" >Update Cart</a></button>
-                                <button id="setText" type="button" onclick="gfg_Run()"><a href="#" class="checkout round-black-btn" title="">Proceed to Checkout</a></button>
+                                <button type="submit"  class="update round-black-btn" title="" form="10">Actualizeaza cosul</button>
                             </div>
+
+                            <a href="/clearer"  class="update round-black-btn" >Goleste cos</a>
+
 
 
                         <!-- /form -->
@@ -161,12 +161,28 @@
         </div>
     </div>
     </form>
-    <form>
-        <input>
-        <input>
-        <input>
-        <button type="submit"></button>
-    </form>
+    <div class="well">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#home" data-toggle="tab">Profile</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane active in" id="home">
+                <form method="post" action="/order" id="tab" >
+                    <label>First Name</label>
+                    <input type="text"  name="firstName" th:value="${firstName}" class="input-xlarge">
+                    <label>Last Name</label>
+                    <input type="text"  name="lastName" th:value="${lastName}" class="input-xlarge">
+                    <label>Address</label>
+                    <textarea th:text="${address}" required name="address" class="input-xlarge">
+            </textarea>
+                    <input name="totalPrice" hidden th:value="${totalPrice}">
+                    <div>
+                        <button class="update round-black-btn">Trimite comanda</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
     var el_down = document.getElementById("2");
