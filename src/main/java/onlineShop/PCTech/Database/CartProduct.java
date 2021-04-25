@@ -1,4 +1,4 @@
-package onlineShop.PCTech.Controller;
+package onlineShop.PCTech.Database;
 
 import onlineShop.PCTech.Database.Product;
 
